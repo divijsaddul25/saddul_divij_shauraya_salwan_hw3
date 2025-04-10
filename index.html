@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <title>Studio Ghibli's Best Creations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <link href="css/grid.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="module" src="js/main.js"></script>
+</head>
+
+<body>
+    <div class="grid-con">
+        <h1 class="col-span-full stu">Studio <span>Ghibli</span><p>スタジオジブリ</p></h1>
+
+
+        <p class="col-span-full">Are you familiar with Studio Ghibli’s Best Creations?</p>
+        <p class="col-span-full">Studio Ghibli has inspired millions since the 1980's, so much that there are now AI generated artworks
+            mimicking the exact art style of Hayao Miyazaki, who is the original creator.
+        </p>
+        <p class="col-span-full">But don't be fooled by those copies, instead we'll be reviewing some of Studio Ghibli's best creations!</p>
+    </div>
+
+
+
+    <div id="app">
+        <div v-if="isLoading" v-html="spinner"></div>
+        <div v-else class="grid-con movie-container" v-for="movie in ghibliData" :key="movie.ghibli_movie_id">
+            <div v-if="error">{{ error }}</div>
+
+
+
+            <div class="col-span-full">
+                <img :src="`images/${movie.movie_banner}`" :alt="movie.title">
+            </div>
+
+
+
+            <div class="col-span-full m-col-start-2 m-col-end-10 movie-title-container">
+                <p class="movie-title">{{ movie.title }}</p>
+                <p class="movie-original-title">{{ movie.original_title }}</p>
+            </div>
+
+
+
+            <div v-if="selectedMovieId === movie.ghibli_movie_id" class="col-span-full" id="movie-detail">    
+                <div v-if="error">{{ error }}</div>
+                <div class="grid-con" v-if="!error">
+                    <div class="col-span-full m-col-start-2 m-col-end-8">
+
+                        <p class="movie-desc">{{ movieDesc }}</p>    
+
+                        <p class="movie-details">Director: &nbsp;&nbsp;<span>{{ directorName }}</span></p>
+
+                        <p class="movie-details">Producer: &nbsp;&nbsp;<span>{{ producerName }}</span></p>  
+
+                        <p class="movie-details">Release Date: &nbsp;&nbsp;<span>{{ releaseDate }}</span></p>
+
+                        <p class="movie-details">Running Time: &nbsp;&nbsp;<span>{{ runningTime }}</span></p>
+
+                        <p class="movie-details">Rating Score: &nbsp;&nbsp;<span>{{ ratingScore }}</span></p>
+
+                    </div>
+
+
+
+                    <div class="col-span-full m-col-start-9 m-col-end-12 movie-image">
+                        <img :src="movieImage" :alt="movie.title">
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
