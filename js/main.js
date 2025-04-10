@@ -10,7 +10,7 @@ const ghibliMovie = Vue.createApp({
 
         console.log("created lifecycle hook called");
 
-        fetch('http://localhost:8888/Vue-main/studioGhibli-api/public/movies')
+        fetch('http://localhost:8888/saddul_divij_shauraya_salwan_hw3-main/studioGhibli-api/public/movies')
 
         .then(res => res.json())
 
