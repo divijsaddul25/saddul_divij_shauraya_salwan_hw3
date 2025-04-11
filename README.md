@@ -18,7 +18,7 @@ The app connects to a **MySQL database** with two tables: `films` and `directors
 
 ---
 
-## 🧱 Technologies Used
+##  Technologies Used
 
 - **Frontend:** : Html,Css,Sass Vue.js 
 - **Backend:** Lumen
